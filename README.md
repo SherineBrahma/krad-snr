@@ -19,9 +19,9 @@ https://github.com/user-attachments/assets/5ce65f85-c079-4509-a272-abc54efefe5a
 ### 1. Clone the repository
 Clone the repository and create a new Python environment with Python 3.8 (e.g. using conda):
 ```bash
-git clone https://github.com/SherineBrahma/deepfermi.git
-conda create -n deepfermi python=3.8
-conda activate deepfermi
+git clone https://github.com/SherineBrahma/krad-snr.git
+conda create -n krad-snr python=3.8
+conda activate krad-snr
 ```
 
 ### 2. Install DeepFermi and dependencies
