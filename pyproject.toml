@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "DeepFermi"
+name = "KRadSNR"
 version = "0.0.1"
 description = "A deep learning framework for quantifying MR myocardial perfusion."
 readme = "README.md"
@@ -21,6 +21,8 @@ classifiers = [
 dependencies = [
     "numpy==1.21",
     "torch==1.13",
+    "scikit-image",
+    "torchkbnufft==0.3.4",
     "prettytable",
     "typeguard",
     "opencv-python",
@@ -47,7 +49,7 @@ lint = ["mypy", "flake8", "isort", "pre-commit", "autopep8", "pydocstyle"]
 docs = ["sphinx", "pydata-sphinx-theme", "sphinx-pyproject"]
 
 [project.urls]
-"repository" = "https://github.com/SherineBrahma/deepfermi"
+"repository" = "https://github.com/SherineBrahma/krad-snr"
 
 # PyTest section
 [tool.pytest.ini_options]
