@@ -60,7 +60,7 @@ def plot_results(cfg) -> None:
     # plt.show()
     fig.savefig(Path.joinpath(Path(save_path), 'SNR_plot'), dpi=500)
 
-    # Plotting zoomed in graph of true SNR vs estimated SNR
+    # Plotting graph of true SNR vs estimated SNR
     fig = plt.figure(figsize=(5, 5))
     plt.title("Estimated SNR")
     for i, color in enumerate(colors):
@@ -89,11 +89,11 @@ def plot_results(cfg) -> None:
                          color=color)
     plt.xlabel('$SNR_{\mathrm{GND}}$')
     plt.ylabel('$SNR_{\mathrm{EST}}$')
-    # Zoomed in figure
-    plt.xlim([2.8, 7.5])
-    plt.ylim([2.8, 7.5])
-    plt.xticks([3, 5, 7])    
-    plt.yticks([3, 5, 7])
+    # plt.legend(loc="upper left")
+    plt.ylim([5, 6.2])
+    plt.xlim([5, 6.2])
+    plt.yticks([5.5, 6])
+    plt.xticks([5, 5.5, 6])
     plt.tick_params(axis='both', which='major', labelsize=20)
     plt.grid()
     # plt.show()

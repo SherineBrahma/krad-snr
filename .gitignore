@@ -160,7 +160,5 @@ cython_debug/
 #.idea/
 
 # Data Folders
-data/*
-!/data/XCAT_phantom/
-experiments/
+results/
 

@@ -6,13 +6,11 @@ from einops import rearrange
 from krad_snr import krad_snr
 from termcolor import colored
 from tqdm import tqdm
-from utils import (
-    DynSENSE,
-    add_gaussian_noise,
-    generate_dyn_shepp_logan,
-    generate_ktraj_rad,
-    magnitude,
-)
+from utils import DynSENSE
+from utils import add_gaussian_noise
+from utils import generate_dyn_shepp_logan
+from utils import generate_ktraj_rad
+from utils import magnitude
 
 
 def run_simulation(

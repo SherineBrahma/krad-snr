@@ -1,6 +1,7 @@
 import torch
 from einops import rearrange
-from utils import add_gaussian_noise, magnitude
+from utils import add_gaussian_noise
+from utils import magnitude
 
 
 def krad_snr(shepp_kdata, ktraj_stacked, noise_mean, npcom=100):
@@ -42,7 +43,7 @@ def krad_snr(shepp_kdata, ktraj_stacked, noise_mean, npcom=100):
     # Compensation term estimation
     pcomp = torch.zeros([ncoils, nt], device=shepp_kdata.device)
     noise_std_tensor = rearrange(
-        knoise_power.sqrt()/ncoils, 'nt -> 1 1 1 1 1 nt'
+        (knoise_power/ncoils).sqrt(), 'nt -> 1 1 1 1 1 nt'
         ) * torch.ones(shepp_kdata.shape, device=knoise_power.device)
     for _ in range(npcom):
         knoise_comp = add_gaussian_noise(

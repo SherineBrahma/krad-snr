@@ -1,12 +1,10 @@
-# DeepFermi
+# SNR in Radial Multi-Coil MRI
 A self-supervised deep learning framework that integrates the Fermi model for fast, accurate, robust, and data-consistent myocardial quantification. For more detailed information, please refer to our publication, 'Robust Myocardial Perfusion MRI Quantification with DeepFermi,' which outlines the methodology and validation of the DeepFermi framework. A brief overview is provided in the video below.
-
-https://github.com/user-attachments/assets/5ce65f85-c079-4509-a272-abc54efefe5a
 
 <a id="publication"></a>
 | [Publication](https://ieeexplore.ieee.org/document/10731565) | [Citation](#bibtex-citation) |
 
-**Contribution**: Sherine Brahma, Andreas Kofler, Felix F. Zimmermann, Tobias Schaeffter, Amedeo Chiribiri, and Christoph Kolbitsch.
+**Contribution**: Sherine Brahma, Christoph Kolbitsch, and Tobias Schaeffter.
 
 ## Network Architecture
 
@@ -24,11 +22,10 @@ conda create -n krad-snr python=3.8
 conda activate krad-snr
 ```
 
-### 2. Install DeepFermi and dependencies
-Install DeepFermi in editable mode along with necessary tools for linting, testing. Run the post-install setup to configure the environment for testing and training:
+### 2. Install KRadSNR and dependencies
+Install KRadSNR in editable mode along with necessary tools for linting, testing. 
 ```bash 
 pip install -e ".[lint,test]"
-sh post_install/post_install.sh
 ```
 
 # Usage
