@@ -1,11 +1,7 @@
 # SNR in Radial Multi-Coil MRI
 A self-supervised deep learning framework that integrates the Fermi model for fast, accurate, robust, and data-consistent myocardial quantification. For more detailed information, please refer to our publication, 'Robust Myocardial Perfusion MRI Quantification with DeepFermi,' which outlines the methodology and validation of the DeepFermi framework. A brief overview is provided in the video below.
 
-
-
-https://github.com/user-attachments/assets/a312628c-8545-40a8-bb3b-78b832888f87
-
-
+https://github.com/user-attachments/assets/829885ef-0619-4d6d-bbd7-74af3e20fd57
 
 <a id="publication"></a>
 | [Publication](https://ieeexplore.ieee.org/document/10731565) | [Citation](#bibtex-citation) |
