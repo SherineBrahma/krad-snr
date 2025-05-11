@@ -1,5 +1,5 @@
 # SNR in Radial Multi-Coil MRI
-A self-supervised deep learning framework that integrates the Fermi model for fast, accurate, robust, and data-consistent myocardial quantification. For more detailed information, please refer to our publication, 'Robust Myocardial Perfusion MRI Quantification with DeepFermi,' which outlines the methodology and validation of the DeepFermi framework. A brief overview is provided in the video below.
+This repository provides a method for estimating SNR directly from k-space data in radial multi-coil MRI. Unlike conventional image-domain methods, it is independent of reconstruction algorithms and unaffected by noise inhomogeneity across the MRI image introduced by multicoil reconstruction. It is less sensitive to undersampling factors, providing more reliable SNR estimation, which is useful for tasks such as generating realistic noise levels in simulated k-space datasets and evaluating pulse sequences, RF coils, and MR systems across different field strengths. A brief overview is provided in the video below.
 
 https://github.com/user-attachments/assets/829885ef-0619-4d6d-bbd7-74af3e20fd57
 
@@ -7,12 +7,6 @@ https://github.com/user-attachments/assets/829885ef-0619-4d6d-bbd7-74af3e20fd57
 | [Publication](https://ieeexplore.ieee.org/document/10731565) | [Citation](#bibtex-citation) |
 
 **Contribution**: Sherine Brahma, Christoph Kolbitsch, and Tobias Schaeffter.
-
-## Network Architecture
-
-<div align="center">
-  <img src="media/network_architecture.png" width="600" height="auto">
-</div>
 
 # Installation
 
