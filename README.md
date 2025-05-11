@@ -47,7 +47,7 @@ To run the simulation, execute the following command:
 python src/krad-snr/main.py
 ```
 
-After running the experiment a folder named ```results``` is created and the simulation results are stored here. An example of a plot is shown below on the right for the shepp logan phantom on the left.
+After running the experiment, a folder named ```results``` is created and the simulation results are stored here. An example of a plot for the Shepp-Logan phantom is shown below, with the phantom on the left and the corresponding SNR estimation plot on the right.
 
 <div align="center">
   <img src="media/snr_plot.png" width="700" height="auto">
