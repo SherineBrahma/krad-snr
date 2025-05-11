@@ -90,7 +90,6 @@ To run the SNR estimation using custom data:
 ```python
 import torch
 from main import krad_snr
-```
 
 # Example input data
 ncoils, nspokes, nr, nt = 32, 100, 320, 3
@@ -100,7 +99,7 @@ noise_mean = 0.0
 
 # Run SNR estimation
 snr, ksignal_power, knoise_power = krad_snr(shepp_kdata, ktraj_stacked, noise_mean)
-
+```
 
 # Citation
 
