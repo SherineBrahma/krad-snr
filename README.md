@@ -4,7 +4,7 @@ This repository provides a method for estimating SNR directly from k-space data 
 https://github.com/user-attachments/assets/829885ef-0619-4d6d-bbd7-74af3e20fd57
 
 <a id="publication"></a>
-| [Publication](https://ieeexplore.ieee.org/document/10731565) | [Citation](#bibtex-citation) |
+| [arXiv](https://ieeexplore.ieee.org/document/10731565) | [Citation](#bibtex-citation) |
 
 **Contribution**: Sherine Brahma, Christoph Kolbitsch, and Tobias Schaeffter.
 
