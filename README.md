@@ -55,7 +55,7 @@ After running the experiment a folder named ```results``` is created and the sim
 
 ## 2. Custom Data
 
-The `krad_snr()` function estimates SNR directly from custom radial k-space data, independent of reconstruction algorithms. It calculates signal and noise power in the k-space domain while accounting for noise inhomogeneity and undersampling artifacts.
+The `krad_snr()` function calculates signal and noise power directly from radial k-space data and estimates the SNR in decibels for each temporal frame. It includes a compensation step to mitigate the influence of noise in the central region that may affect the signal power calculation.
 
 ### **Input Format**
 
@@ -67,7 +67,7 @@ The `krad_snr()` function estimates SNR directly from custom radial k-space data
   - `nr`: Number of readout points  
   - `nt`: Number of temporal frames  
 
-- `ktraj_stacked` (`torch.Tensor`): Radial k-space trajectory with shape `(1, 2, 1, nspokes, nr, 1)`
+- `ktraj` (`torch.Tensor`): Radial k-space trajectory with shape `(1, 2, 1, nspokes, nr, 1)`
 
 - `noise_mean` (`float`): Mean of Gaussian noise (default: `0.0`)
 
@@ -77,7 +77,7 @@ The `krad_snr()` function estimates SNR directly from custom radial k-space data
 
 ### **Output Format**
 
-- `snr` (`torch.Tensor`): Estimated SNR values for each temporal frame, shape `(nt,)`  
+- `snr` (`torch.Tensor`): Estimated SNR values in decibels, shape `(nt,)`  
 - `ksignal_power` (`torch.Tensor`): Estimated signal power, shape `(nt,)`  
 - `knoise_power` (`torch.Tensor`): Estimated noise power, shape `(nt,)`  
 
