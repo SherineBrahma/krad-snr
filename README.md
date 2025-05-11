@@ -55,25 +55,52 @@ After running the experiment a folder named ```results``` is created and the sim
 
 ## 2. Custom Data
 
-A pre-trained model, trained on a larger dataset (see [publication](#publication) for details), is included for quick testing. You can directly run the provided testing script to evaluate the pre-trained model on two datasets: i) with motion artifacts, and ii) without motion artifacts.
+The `krad_snr()` function estimates SNR directly from custom radial k-space data, independent of reconstruction algorithms. It calculates signal and noise power in the k-space domain while accounting for noise inhomogeneity and undersampling artifacts.
+
+### **Input Format**
+
+- `shepp_kdata` (`torch.Tensor`): Radial k-space data with shape `(1, 2, ncoils, nspokes, nr, nt)`  
+  - `1`: Batch size (must be 1)  
+  - `2`: Complex dimension (real and imaginary)  
+  - `ncoils`: Number of coils  
+  - `nspokes`: Number of radial spokes  
+  - `nr`: Number of readout points  
+  - `nt`: Number of temporal frames  
+
+- `ktraj_stacked` (`torch.Tensor`): Radial k-space trajectory with shape `(1, 2, 1, nspokes, nr, 1)`
+
+- `noise_mean` (`float`): Mean of Gaussian noise (default: `0.0`)
+
+- `npcom` (`int`, optional): Number of simulations for compensation term estimation (default: `100`)
+
+---
+
+### **Output Format**
+
+- `snr` (`torch.Tensor`): Estimated SNR values for each temporal frame, shape `(nt,)`  
+- `ksignal_power` (`torch.Tensor`): Estimated signal power, shape `(nt,)`  
+- `knoise_power` (`torch.Tensor`): Estimated noise power, shape `(nt,)`  
+
+---
+
+### **Example Usage**
+
+To run the SNR estimation using custom data:
 
 ```python
-sh script/test_job_queue.sh
+import torch
+from main import krad_snr
 ```
 
-The results will be saved as output arrays in the ```experiments``` folder, which can be further assessed. For example, to visualize the generated arrays, run:
+# Example input data
+ncoils, nspokes, nr, nt = 32, 100, 320, 3
+shepp_kdata = torch.randn(1, 2, ncoils, nspokes, nr, nt)
+ktraj_stacked = torch.randn(1, 2, 1, nspokes, nr, 1)
+noise_mean = 0.0
 
-```python
- python src/deepfermi/analysis/generate_img.py
-```
+# Run SNR estimation
+snr, ksignal_power, knoise_power = krad_snr(shepp_kdata, ktraj_stacked, noise_mean)
 
-The example below shows that DeepFermi estimates are more robust to motion artifacts compared to traditional Fermi-deconvolution, which relies on well-established optimization algorithms without deep learning components, such as the [Limited memory Broyden-Fletcher-Goldfarb-Shanno](https://link.springer.com/article/10.1007/BF01589116) (LBFGS) algorithm.
-
-<div align="center">
-  <img src="media/results.png" width="700" height="auto">
-</div>  
-
-You can also write custom scripts to analyze the arrays. Additionally, an ```evaluate_measures.py script``` is provided for quantitatively assessing the performance of the model.
 
 # Citation
 
