@@ -59,7 +59,7 @@ The `krad_snr()` function calculates signal and noise power directly from radial
 
 ### **Input Format**
 
-- `shepp_kdata` (`torch.Tensor`): Radial k-space data with shape `(1, 2, ncoils, nspokes, nr, nt)`  
+- `kdata` (`torch.Tensor`): Radial k-space data with shape `(1, 2, ncoils, nspokes, nr, nt)`  
   - `1`: Batch size (fixed)
   - `2`: Complex dimension (real and imaginary)  
   - `ncoils`: Number of coils  
@@ -93,12 +93,11 @@ from main import krad_snr
 
 # Example input data
 ncoils, nspokes, nr, nt = 32, 100, 320, 3
-shepp_kdata = torch.randn(1, 2, ncoils, nspokes, nr, nt)
-ktraj_stacked = torch.randn(1, 2, 1, nspokes, nr, 1)
-noise_mean = 0.0
+kdata = torch.randn(1, 2, ncoils, nspokes, nr, nt)
+ktraj = torch.randn(1, 2, 1, nspokes, nr, 1)
 
 # Run SNR estimation
-snr, ksignal_power, knoise_power = krad_snr(shepp_kdata, ktraj_stacked, noise_mean)
+snr, ksignal_power, knoise_power = krad_snr(kdata, ktraj)
 ```
 
 # Citation
