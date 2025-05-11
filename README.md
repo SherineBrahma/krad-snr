@@ -60,7 +60,7 @@ The `krad_snr()` function calculates signal and noise power directly from radial
 ### **Input Format**
 
 - `shepp_kdata` (`torch.Tensor`): Radial k-space data with shape `(1, 2, ncoils, nspokes, nr, nt)`  
-  - `1`: Batch size
+  - `1`: Batch size (fixed)
   - `2`: Complex dimension (real and imaginary)  
   - `ncoils`: Number of coils  
   - `nspokes`: Number of radial spokes  
