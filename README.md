@@ -30,15 +30,22 @@ pip install -e ".[lint,test]"
 
 The simulation demonstrates the SNR estimation method using a Shepp-Logan phantom with 320×320 dimensions. Radial k-space spokes are generated using the NUFFT operator from the TorchKbNufft package, applying a golden-angle acquisition scheme with 32 dummy coil sensitivity maps and varying undersampling factors. Gaussian noise with different standard deviations is then added to the k-space data to evaluate the proposed method under various simulated SNR levels. Configuration inputs for the simulation are defined in the config files located in the config folder. An explanation of these inputs is provided below:
 
+```yaml 
+# General Parameters
+nr: 320                # Number of readout points per frame
+nt: 3                  # Number of temporal frames
+osmpl_fact: 2          # Oversampling factor
+nspokes_array: [503, 251, 75, 50, 36]  # List of total radial spokes to be simulated
+noise_std_list: [1.0, 0.8, 0.5, 0.2, 0.1, 0.05]  # Noise standard deviations
+nbootstrap: 100        # Number of bootstrap repetitions for SNR estimation
+device: 'cuda'         # Computation device ('cuda' or 'cpu')
+```
 
+To run the simulation, execute the following command:
 
-
-
-
-
-
-
-
+```python
+python src/krad-snr/main.py
+```
 
 This repository includes a small dataset of five cardiac slices based on the [XCAT](https://aapm.onlinelibrary.wiley.com/doi/10.1118/1.3480985) phantom, for the purpose of code demonstration. Run the ```data_generation.py``` script to generate myocardial perfusion maps, and to simulate dynamic contrast agent (DCE) MRI images. Furthermore, you can customize the parameters directly in the data_generation.py script.
 
