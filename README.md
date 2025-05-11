@@ -28,7 +28,7 @@ pip install -e ".[lint,test]"
 
 ## 1. Simulation
 
-The simulation demonstrates the SNR estimation method using a Shepp-Logan phantom with 320×320 dimensions. Radial k-space spokes are generated using the NUFFT operator from the TorchKbNufft package, applying a golden-angle acquisition scheme with 32 dummy coil sensitivity maps and varying undersampling factors. Gaussian noise with different standard deviations is then added to the k-space data to evaluate the proposed method under various simulated SNR levels. Configuration inputs for the simulation are defined in the config files located in the config folder. An explanation of these inputs is provided below:
+The simulation demonstrates the SNR estimation method using a Shepp-Logan phantom. Radial k-space spokes are generated using the NUFFT operator from the TorchKbNufft package, applying a golden-angle acquisition scheme with 32 dummy coil sensitivity maps and varying undersampling factors. Gaussian noise with different standard deviations is then added to the k-space data to evaluate the proposed method under various simulated SNR levels. Configuration inputs for the simulation are defined in the config files located in the config folder. An explanation of these inputs is provided below:
 
 ```yaml 
 # General Parameters
