@@ -47,16 +47,10 @@ To run the simulation, execute the following command:
 python src/krad-snr/main.py
 ```
 
-This repository includes a small dataset of five cardiac slices based on the [XCAT](https://aapm.onlinelibrary.wiley.com/doi/10.1118/1.3480985) phantom, for the purpose of code demonstration. Run the ```data_generation.py``` script to generate myocardial perfusion maps, and to simulate dynamic contrast agent (DCE) MRI images. Furthermore, you can customize the parameters directly in the data_generation.py script.
-
-```python
-python src/deepfermi/data_generation.py
-```
-
-A DCE perfusion dataset, ```dce_perfusion_data.npz```, is created in the ```data``` folder. The DCE images that are synthesized are further induced with motion outliers to model practical scenarios, as shown in the gif below.
+After running the experiment a folder named ```results``` is created and the simulation results are stored here. An example of a plot is shown below on the right for the shepp logan phantom on the left.
 
 <div align="center">
-  <img src="media/simulation_dataset.gif" width="700" height="auto">
+  <img src="media/snr_plot.png" width="700" height="auto">
 </div>
 
 ## 2. Custom Data
