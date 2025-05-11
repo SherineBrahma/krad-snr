@@ -107,11 +107,10 @@ snr, ksignal_power, knoise_power = krad_snr(kdata, ktraj)
 If you found our work useful, please consider citing it. The BibTeX is provided below:
 
 ```bibtex
-@article{brahma2024robust,
-  title={Robust Myocardial Perfusion MRI Quantification with DeepFermi},
+@article{brahma2024krad,
+  title={Determining Signal-to-Noise Ratio in k-space for radial MRI using multichannel receive coils},
   author={Brahma, Sherine and Kolbitsch, Christoph and Schaeffter, Tobias},
-  journal={IEEE Transactions on Biomedical Engineering},
-  year={2025},
-  publisher={IEEE}
+  journal={arXiv preprint},
+  year={2025}
 }
 ```
