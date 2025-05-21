@@ -6,7 +6,7 @@ https://github.com/user-attachments/assets/829885ef-0619-4d6d-bbd7-74af3e20fd57
 <a id="publication"></a>
 | [arXiv](blank) | [citation](#bibtex-citation) |
 
-Note: The paper is under internal review before journal submission and will be updated soon.
+Note: The paper is under internal review before journal submission and will be updated soon. However, the derivation can also be found in [link](https://depositonce.tu-berlin.de/items/48d2ff18-3ddc-440a-9088-ec86d3f9dc42).
 
 **Contribution**: Sherine Brahma, Christoph Kolbitsch, and Tobias Schaeffter.
 
