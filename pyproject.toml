@@ -5,11 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "KRadSNR"
 version = "0.0.1"
-description = "A deep learning framework for quantifying MR myocardial perfusion."
+description = "Reliable SNR estimation directly from k-space data in radial multi-coil MRI."
 readme = "README.md"
 requires-python = "<3.9"
 license = { file = "LICENSE" }
-keywords = ["MRI, myocardial perfusion, deep learning, PyTorch"]
+keywords = ["Signal-to-noise ratio, Radial multi-coil cine MRI, PyTorch"]
+
 authors = [
     { name = "Sherine Brahma", email = "sherine.brahma@ptb.de" },
 ]

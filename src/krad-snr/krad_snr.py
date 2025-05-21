@@ -4,16 +4,18 @@ from utils import add_gaussian_noise
 from utils import magnitude
 
 
-def krad_snr(shepp_kdata, ktraj_stacked, noise_mean, npcom=100):
+def krad_snr(kdata, ktraj, noise_mean, npcom=100):
     """
     Estimate SNR from radial k-space data wher the noise power is
-    estimated from the edges of the k-space spokes.
+    estimated from the edges of the k-space spokes. In this implementation,
+    it is assumed that the equal number of spokes are binned in each 
+    temporal frame with the same k-space trajectory.
 
     Args:
-        shepp_kdata (torch.Tensor): Radial k-space data with shape
+        kdata (torch.Tensor): Radial k-space data with shape
                                     (1, ncplx=2, ncoils, nspokes, nr, nt).
-        ktraj_stacked (torch.Tensor): Stacked radial k-space trajectory
-                                      (1, ncplx=2, 1, nspokes, nr, 1).
+        ktraj (torch.Tensor): Stacked radial k-space trajectory
+                                      (1, ncplx=2, nspokes, nr).
         noise_mean (float): Mean of Gaussian noise (typically 0.0).
         npcom (int, optional): Number of simulations for compensation term
                                estimation. Defaults to 100.
@@ -27,29 +29,32 @@ def krad_snr(shepp_kdata, ktraj_stacked, noise_mean, npcom=100):
     """
 
     # General Initializations
-    _, _, ncoils, nspokes, nr, nt = shepp_kdata.shape
+    _, _, ncoils, nspokes, nr, nt = kdata.shape
     ksignal_area_fraction = 0.90
     rlim = int(nr-(ksignal_area_fraction*nr))
     
     # Estimate noise from the outer edges of radial k-space
-    knoise = shepp_kdata.clone()
+    knoise = kdata.clone()
     knoise = torch.cat((knoise[..., :3, :], knoise[..., -3:, :]), -2)
     knoise_std = knoise.std((0, 1, 3, 4))
     knoise_power = (knoise_std**2).sum((0))
     
-    # Calculate ramp filter response 
-    kradius = magnitude(ktraj_stacked).unsqueeze(1).sqrt()
+    # Calculate ramp filter response
+    ktraj = rearrange(ktraj,
+                      '1 ncplx nspokes nr -> 1 ncplx 1 nspokes nr 1',
+                      nspokes=nspokes)
+    kradius = magnitude(ktraj).unsqueeze(1).sqrt()
     
     # Compensation term estimation
-    pcomp = torch.zeros([ncoils, nt], device=shepp_kdata.device)
+    pcomp = torch.zeros([ncoils, nt], device=kdata.device)
     noise_std_tensor = rearrange(
         (knoise_power/ncoils).sqrt(), 'nt -> 1 1 1 1 1 nt'
-        ) * torch.ones(shepp_kdata.shape, device=knoise_power.device)
+        ) * torch.ones(kdata.shape, device=knoise_power.device)
     for _ in range(npcom):
         knoise_comp = add_gaussian_noise(
                             torch.zeros(
-                                    shepp_kdata.shape,
-                                    device=shepp_kdata.device
+                                    kdata.shape,
+                                    device=kdata.device
                                             ),
                             mean=noise_mean,
                             std=noise_std_tensor
@@ -60,7 +65,7 @@ def krad_snr(shepp_kdata, ktraj_stacked, noise_mean, npcom=100):
     pcomp = pcomp/npcom
 
     # Extract central region for signal (zero out edges)
-    ksignal = shepp_kdata.clone()
+    ksignal = kdata.clone()
     ksignal[..., :rlim, :], ksignal[..., -rlim:, :] = 0, 0
 
     # Compensate and estimate signal power

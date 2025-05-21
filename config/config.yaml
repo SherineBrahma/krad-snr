@@ -4,7 +4,7 @@
 nr: 320
 nt: 3
 osmpl_fact: 2
-nspokes_array: [503, 251, 75, 50, 36] # [503] # 
-noise_std_list: [1.0, 0.8, 0.5, 0.2, 0.1, 0.05] # [1.0, 0.05] # 
-nbootstrap: 100 # 10 # 
+nspokes_array: [503, 251, 75, 50, 36]
+noise_std_list: [1.0, 0.8, 0.5, 0.2, 0.1, 0.05]
+nbootstrap: 100
 device: 'cuda'

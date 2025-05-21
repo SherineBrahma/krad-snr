@@ -76,7 +76,7 @@ def run_simulation(
     # Bootstrapping SNR estimation
     SNR_boot = torch.zeros((nbootstrap, nt))
     ktraj = rearrange(ktraj,
-                      '1  ncplx (nspokes nr) -> 1 ncplx 1 nspokes nr 1',
+                      '1  ncplx (nspokes nr) -> 1 ncplx nspokes nr',
                       nspokes=nspokes)
     for nboot in tqdm(range(nbootstrap)):
 

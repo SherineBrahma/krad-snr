@@ -67,7 +67,7 @@ The `krad_snr()` function calculates signal and noise power directly from radial
   - `nr`: Number of readout points  
   - `nt`: Number of temporal frames  
 
-- `ktraj` (`torch.Tensor`): Radial k-space trajectory with shape `(1, 2, 1, nspokes, nr, 1)`
+- `ktraj` (`torch.Tensor`): Radial k-space trajectory with shape `(1, 2, nspokes, nr)`
 
 - `noise_mean` (`float`): Mean of Gaussian noise (default: `0.0`)
 
@@ -94,7 +94,7 @@ from main import krad_snr
 # Example input data
 ncoils, nspokes, nr, nt = 32, 100, 320, 3
 kdata = torch.randn(1, 2, ncoils, nspokes, nr, nt)
-ktraj = torch.randn(1, 2, 1, nspokes, nr, 1)
+ktraj = torch.randn(1, 2, nspokes, nr)
 
 # Run SNR estimation
 snr, ksignal_power, knoise_power = krad_snr(kdata, ktraj)
